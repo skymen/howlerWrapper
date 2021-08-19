@@ -24,7 +24,7 @@ People are however free and welcome to make changes, fork this repo, make pull r
 ### dbToLinear / linearToDb / dbToLinear_nocap / linearToDb_nocap
   Methods used to convert from the linear range to the dB range, 0 being -60dB and 1 being 0dB. It will also, auto convert any number under -60db to 0 instead of approaching 0 as the dBs approach -Infinity.
  
-  You never need to use these methods, but it helps knowing they exist.
+  *Note: You never need to use these methods, but it helps knowing they exist.*
   
 ### play
   Play an audio and put it in a group.
@@ -34,7 +34,7 @@ People are however free and welcome to make changes, fork this repo, make pull r
   HowlerWrapper.play("myMusic",  "music");
   ```
   
-  Note: This will reuse existing Howls when possible, and will create one Howl per group-audio couple. So if you want to play one audio file in multiple groups, it will create one Howl per group. I could arguably refactor that and manage individual Sounds when that's the case, but it would be overcomplicated for no reason.
+  *Note: This will reuse existing Howls when possible, and will create one Howl per group-audio couple. So if you want to play one audio file in multiple groups, it will create one Howl per group. I could arguably refactor that and manage individual Sounds when that's the case, but it would be overcomplicated for no reason.*
 
 ### setPaused
   pause or resume a group.
@@ -43,7 +43,7 @@ People are however free and welcome to make changes, fork this repo, make pull r
   
   This pauses all the playing sounds and keeps them in an array for reference to be resumed later.
   
-  Note: In HowlerJS, using play() on a paused Howl only works if that Howl has a single paused sound in it. If you have more than one, it will create a new Sound instead, which is dumb.
+  *Note: In HowlerJS, using play() on a paused Howl only works if that Howl has a single paused sound in it. If you have more than one, it will create a new Sound instead, which is dumb.*
 
 ### setMuted
   mute or unmute a group.
@@ -55,7 +55,7 @@ People are however free and welcome to make changes, fork this repo, make pull r
   
   if no group is passed, affects every group.
   
-  Note: This is troublesome because ideally, I'd want finer control on this. I started experimenting with a tag system to select individual sounds, but did not implement it because I did not need it at the time. I will probably refactor this in the future though.
+  *Note: This is troublesome because ideally, I'd want finer control on this. I started experimenting with a tag system to select individual sounds, but did not implement it because I did not need it at the time. I will probably refactor this in the future though.*
 
 ### setVolume / setLinearVolume
   set the volume for a group.
@@ -103,5 +103,5 @@ People are however free and welcome to make changes, fork this repo, make pull r
   
   getVolume returns the volume in dB, getLinearVolume returns the volume as a number from 0 to 1.
   
-  Note: In HowlerJS, setting and getting the volume is managed by the same method. I don't like that, so I decided to have this as a separate method instead.
+  *Note: In HowlerJS, setting and getting the volume is managed by the same method. I don't like that, so I decided to have this as a separate method instead.*
   
