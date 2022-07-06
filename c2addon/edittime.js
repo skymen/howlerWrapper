@@ -189,6 +189,9 @@ AddAction(
 
 AddStringParam("Audio", "");
 AddStringParam("Group", "", "");
+AddComboParamOption("Yes");
+AddComboParamOption("No");
+AddComboParam("Use HTML5", "No");
 AddAction(
   12,
   0,
