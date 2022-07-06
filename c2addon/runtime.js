@@ -138,11 +138,11 @@ cr.plugins_.skymenhowlerjs = function (runtime) {
       HowlerAudioPlayer.unload(file[0], group);
     }
   };
-  Acts.prototype.LoadByName = function (file, group) {
+  Acts.prototype.LoadByName = function (file, group, isHtml) {
     if (group.trim() === "") {
-      HowlerAudioPlayer.load(file);
+      HowlerAudioPlayer.load(file, null, isHtml === 0);
     } else {
-      HowlerAudioPlayer.load(file, group);
+      HowlerAudioPlayer.load(file, group, isHtml === 0);
     }
   };
   Acts.prototype.UnloadByName = function (file, group) {
