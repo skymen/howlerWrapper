@@ -1809,7 +1809,7 @@ globalThis.HowlerWrapper = {
     return (Math.log(x) / Math.log(10)) * 20;
   },
 
-  play(name, group = "sounds") {
+  play(name, group = "sounds", loop = false, isHtml = false) {
     //if sound has already been played before, reuse it, else create new Howler.
     let howler;
     this.audioStore[group] = this.audioStore[group] || {};
@@ -1817,10 +1817,10 @@ globalThis.HowlerWrapper = {
     else if (this.loadedAudio[name]) {
       howler = this.audioStore[group][name] = this.loadedAudio[name];
       delete this.loadedAudio[name];
-    } else howler = this.load(name, group);
+    } else howler = this.load(name, group, isHtml);
 
     howler.volume(this.volumes[group] || 1);
-
+    howler.loop(loop);
     howler.play();
   },
   setPaused(paused = true, group) {
@@ -1943,13 +1943,14 @@ globalThis.HowlerWrapper = {
       }
     }
   },
-  load(name, group) {
+  load(name, group, isHtml = false) {
     let fullPath = this.audioFolder + name.toLowerCase();
     if (group) {
       this.audioStore[group] = this.audioStore[group] || {};
       if (!this.audioStore[group][name]) {
         this.audioStore[group][name] = new Howl({
           src: this.supportedFileTypes.map((type) => fullPath + type),
+          html5: isHtml,
         });
       }
       return this.audioStore[group][name];
@@ -1957,6 +1958,7 @@ globalThis.HowlerWrapper = {
       if (this.loadedAudio[name]) return;
       this.loadedAudio[name] = new Howl({
         src: this.supportedFileTypes.map((type) => fullPath + type),
+        html5: isHtml,
       });
     }
   },
