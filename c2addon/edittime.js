@@ -78,36 +78,36 @@ AddCondition(
 
 AddAudioFileParam("Audio", "");
 AddStringParam("Group", "", "");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Loop", "No");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Use HTML5", "No");
 AddAction(
   0,
   0,
   "Play",
   "HowlerJS",
-  "Play <b>{0}</b> (group <i>{1}</i>)",
+  "Play <b>{0}</b> (group <i>{1}</i>, loop <i>{2}</i>, use HTML5 <i>{3}</i>)",
   "",
   "Play"
 );
 
 AddStringParam("Audio", "", "");
 AddStringParam("Group", "", "");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Loop", "No");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Use HTML5", "No");
 AddAction(
   1,
   0,
   "Play (by name)",
   "HowlerJS",
-  "Play <b>{0}</b> (group <i>{1}</i>)",
+  "Play <b>{0}</b> (group <i>{1}</i>, loop <i>{2}</i>, use HTML5 <i>{3}</i>)",
   "",
   "PlayByName"
 );
@@ -162,15 +162,15 @@ AddAction(
 
 AddAudioFileParam("Audio", "");
 AddStringParam("Group", "", "");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Use HTML5", "No");
 AddAction(
   10,
   0,
   "Load",
   "HowlerJS",
-  "Load <b>{0}</b> in group <i>{1}</i>",
+  "Load <b>{0}</b> in group <i>{1}</i> (use HTML5: <i>{2}</i>)",
   "",
   "Load"
 );
@@ -189,15 +189,15 @@ AddAction(
 
 AddStringParam("Audio", "");
 AddStringParam("Group", "", "");
-AddComboParamOption("Yes");
 AddComboParamOption("No");
+AddComboParamOption("Yes");
 AddComboParam("Use HTML5", "No");
 AddAction(
   12,
   0,
   "Load (by name)",
   "HowlerJS",
-  "Load <b>{0}</b> in group <i>{1}</i>",
+  "Load <b>{0}</b> in group <i>{1}</i> (use HTML5: <i>{2}</i>)",
   "",
   "LoadByName"
 );

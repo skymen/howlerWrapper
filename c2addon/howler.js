@@ -1944,7 +1944,9 @@ globalThis.HowlerWrapper = {
     }
   },
   load(name, group, isHtml = false) {
-    let fullPath = this.audioFolder + name.toLowerCase();
+    let audioFolder = this.audioFolder;
+    if (typeof audioFolder === "function") audioFolder = audioFolder();
+    let fullPath = audioFolder + name.toLowerCase();
     if (group) {
       this.audioStore[group] = this.audioStore[group] || {};
       if (!this.audioStore[group][name]) {

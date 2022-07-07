@@ -4,7 +4,7 @@
 assert2(cr, "cr namespace not created");
 assert2(cr.plugins_, "cr.plugins_ not created");
 
-var HowlerAudioPlayer = globalThis.HowlerAudioPlayer;
+var HowlerAudioPlayer = globalThis.HowlerWrapper;
 /////////////////////////////////////
 // Plugin class
 cr.plugins_.skymenhowlerjs = function (runtime) {
@@ -20,7 +20,7 @@ cr.plugins_.skymenhowlerjs = function (runtime) {
   pluginProto.Type = function (plugin) {
     this.plugin = plugin;
     this.runtime = plugin.runtime;
-    HowlerAudioPlayer.init(this.runtime);
+    HowlerAudioPlayer.init(() => this.runtime.files_subfolder);
   };
 
   var typeProto = pluginProto.Type.prototype;
@@ -77,16 +77,16 @@ cr.plugins_.skymenhowlerjs = function (runtime) {
 
   Acts.prototype.Play = function (file, group, loop, isHtml) {
     if (group.trim() === "") {
-      HowlerAudioPlayer.play(file[0], null, loop === 0, isHtml === 0);
+      HowlerAudioPlayer.play(file[0], null, loop === 1, isHtml === 1);
     } else {
-      HowlerAudioPlayer.play(file[0], group, loop === 0, isHtml === 0);
+      HowlerAudioPlayer.play(file[0], group, loop === 1, isHtml === 1);
     }
   };
   Acts.prototype.PlayByName = function (file, group, loop, isHtml) {
     if (group.trim() === "") {
-      HowlerAudioPlayer.play(file, null, loop === 0, isHtml === 0);
+      HowlerAudioPlayer.play(file, null, loop === 1, isHtml === 1);
     } else {
-      HowlerAudioPlayer.play(file, group, loop === 0, isHtml === 0);
+      HowlerAudioPlayer.play(file, group, loop === 1, isHtml === 1);
     }
   };
   Acts.prototype.Stop = function (group) {
@@ -126,9 +126,9 @@ cr.plugins_.skymenhowlerjs = function (runtime) {
   };
   Acts.prototype.Load = function (file, group, isHtml) {
     if (group.trim() === "") {
-      HowlerAudioPlayer.load(file[0], null, isHtml === 0);
+      HowlerAudioPlayer.load(file[0], null, isHtml === 1);
     } else {
-      HowlerAudioPlayer.load(file[0], group, isHtml === 0);
+      HowlerAudioPlayer.load(file[0], group, isHtml === 1);
     }
   };
   Acts.prototype.Unload = function (file, group) {
@@ -140,9 +140,9 @@ cr.plugins_.skymenhowlerjs = function (runtime) {
   };
   Acts.prototype.LoadByName = function (file, group, isHtml) {
     if (group.trim() === "") {
-      HowlerAudioPlayer.load(file, null, isHtml === 0);
+      HowlerAudioPlayer.load(file, null, isHtml === 1);
     } else {
-      HowlerAudioPlayer.load(file, group, isHtml === 0);
+      HowlerAudioPlayer.load(file, group, isHtml === 1);
     }
   };
   Acts.prototype.UnloadByName = function (file, group) {
